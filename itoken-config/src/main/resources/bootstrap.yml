@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: itoken-config   # 指定本服务的名称；
+  boot:
+    admin:                # Spring Boot Admin 服务监控；
+      client:
+        url: http://localhost:8084   # 指定Admin服务端的地址+端口，本服务作为Admin的客户端被其监控；
+  cloud:
+    config:               # Spring Cloud 分布式配置中心；
+      label: master       # 配置仓库的分支；
+      server:
+        git:
+          uri: http://192.168.141.176:8080/itoken/itoken-config.git  # 配置分布式配置中心的仓库地址；
+          search-paths: respo        # 配置仓库路径；
+          username: zxj
+          password: 12345678
+  zipkin:
+    base-url: http://localhost:9411   # 配置 Zipkin Server 的地址；
+
+server:
+  port: 8888              # 指定本服务开启的端口号；
+
+eureka:
+  client:
+    serviceUrl:           # 指定Eureka服务端地址，根据此地址注册将本服务到Eureka服务端；
+      defaultZone: http://localhost:8761/eureka/
+
+management:               # Spring Boot Admin 服务端配置；
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info  # 若写成*，则显示的信息项更多；

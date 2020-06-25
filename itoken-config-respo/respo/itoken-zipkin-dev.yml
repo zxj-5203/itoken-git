@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: itoken-zipkin   # 指定本服务的名称；
+  boot:
+    admin:   # Spring Boot Admin 服务监控；
+      client:
+        url: http://localhost:8084   # 指定Admin服务端的地址+端口，本服务作为Admin的客户端被其监控；
+  zipkin:
+    base-url: http://localhost:9411  # 配置 Zipkin Server 的地址；
+
+server:
+  port: 9411     # 指定本服务开启的端口号；
+
+eureka:
+  client:
+    serviceUrl:   # 指定Eureka服务端地址，根据此地址注册将本服务到Eureka服务端；
+      defaultZone: http://localhost:8761/eureka/
+
+management:    # Spring Boot Admin 服务端配置；
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info   # 若写成*，则显示的信息项更多；
+  metrics:   # 2.8版本不需要这段配置，2.10之后才有；
+    web:
+      server:
+        auto-time-requests: false

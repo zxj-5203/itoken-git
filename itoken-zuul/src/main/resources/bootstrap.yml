@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888 # 配置服务中心spring-cloud-config的地址；
+      name: itoken-zuul          # 配置文件的名字的前缀；
+      label: master              # 配置仓库的分支；
+      profile: dev     			 # 配置文件的环境标识：指定激活dev环境的配置文件；

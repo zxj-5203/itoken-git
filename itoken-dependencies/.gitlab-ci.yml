@@ -1,0 +1,9 @@
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - whoami
+    - /usr/local/maven/apache-maven-3.6.1/bin/mvn deploy
+
