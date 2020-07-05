@@ -1,6 +1,5 @@
 package com.zxj.itoken.web.admin.interceptor;
 
-import com.ctc.wstx.util.StringUtil;
 import com.zxj.itoken.common.domain.TbSysUser;
 import com.zxj.itoken.common.utils.CookieUtils;
 import com.zxj.itoken.common.utils.MapperUtils;
@@ -12,13 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
+ * 重构：改用 LoginInterceptor
  * @author zxj
  * @date 2020/06/25
  */

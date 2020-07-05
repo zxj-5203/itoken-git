@@ -2,7 +2,9 @@ package com.zxj.itoken.web.admin.fallback;
 
 import com.google.common.collect.Lists;
 import com.zxj.itoken.common.constants.HttpConstants;
+import com.zxj.itoken.common.domain.TbSysUser;
 import com.zxj.itoken.common.dto.BaseResult;
+import com.zxj.itoken.common.hystrix.Fallback;
 import com.zxj.itoken.common.utils.MapperUtils;
 import com.zxj.itoken.web.admin.service.AdminService;
 import org.springframework.stereotype.Component;
@@ -29,5 +31,25 @@ public class AdminServiceFallback implements AdminService {
         }
         return null;   // 如果出异常，暂时返回null
     }
-}
 
+    @Override
+    public String get(String userCode) {
+        try {
+            String json = MapperUtils.obj2json(new TbSysUser());
+            return json;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public String save(String tbSysUserJson, String optsBy) {
+        return Fallback.badGateway();
+    }
+
+    @Override
+    public String page(int pageNum, int pageSize, String tbSysUserJson) {
+        return Fallback.badGateway();
+    }
+}

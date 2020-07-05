@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
+ * 重构：改用 WebInterceptorConfiguration
  * @author zxj
  * @date 2020/06/25
  */

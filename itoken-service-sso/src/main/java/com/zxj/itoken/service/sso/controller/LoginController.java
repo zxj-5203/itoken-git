@@ -136,7 +136,11 @@ public class LoginController {
         }
 
         // 注销时，可能不是在认证中心里注销的，从别的系统注销过来的，再次登录，还要跳回别的系统，所以需要别的系统的url
-        return login(request, model, url);
+        if (StringUtils.isNotBlank(url)) {
+            return "redirect:/login?url=" + url;
+        } else {
+            return "redirect:/login";
+        }
     }
 }
 

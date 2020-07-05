@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
+ * 重构：改用 LoginInterceptor
  * @author zxj
  * @date 2020/06/25
  */

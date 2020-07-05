@@ -21,3 +21,4 @@ public interface RedisService {
     @RequestMapping(value = "get", method = RequestMethod.GET)
     public String get(@RequestParam(value = "key") String key);
 }
+
