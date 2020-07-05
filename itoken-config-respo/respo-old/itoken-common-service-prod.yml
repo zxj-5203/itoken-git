@@ -1,0 +1,33 @@
+spring:
+  boot:
+    admin:
+      client:
+        url: http://192.168.141.180:8084
+  zipkin:
+    base-url: http://192.168.141.180:9411
+
+
+mybatis:
+  # 实体类的存放路径
+  type-aliases-package: com.zxj.itoken.common.domain
+  mapper-locations: classpath:mapper/*.xml
+
+logging:
+  level:
+    com.zxj.itoken.service.admin.mapper: debug
+
+eureka:
+  client:
+    serviceUrl:
+#      defaultZone: http://192.168.141.180:8761/eureka/,http://192.168.141.180:8861/eureka/,http://192.168.141.180:8961/eureka/
+       defaultZone: http://192.168.141.180:8761/eureka/
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+

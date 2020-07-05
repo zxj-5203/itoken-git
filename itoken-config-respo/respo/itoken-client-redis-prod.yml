@@ -1,0 +1,11 @@
+spring:
+  redis:
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 0
+    sentinel:  # 配置哨兵的地址
+      master: mymaster   # 服务器中sentinel.conf中配置的名字
+      nodes: 192.168.141.180:26380,192.168.141.180:26381,192.168.141.180:26382

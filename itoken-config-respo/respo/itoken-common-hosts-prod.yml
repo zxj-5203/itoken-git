@@ -1,0 +1,3 @@
+# 通用的主机配置
+hosts:
+  sso: http://localhost:8503

@@ -1,0 +1,10 @@
+mybatis:
+  configuration:
+    cache-enabled: true  # 开启二级缓存
+  # 实体类的存放路径
+  type-aliases-package: com.zxj.itoken.common.domain
+  mapper-locations: classpath:mapper/*.xml
+
+logging:
+  level:
+    com.zxj.itoken.service.admin.mapper: debug

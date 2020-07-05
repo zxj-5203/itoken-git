@@ -1,0 +1,14 @@
+spring:
+  boot:
+    admin:                # Spring Boot Admin 服务监控；
+      client:
+        url: http://192.168.141.180:8084   # 指定Admin服务端的地址+端口，本服务作为Admin的客户端被其监控；
+
+management:               # Spring Boot Admin 服务端配置；
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info   # 若写成*，则显示的信息项更多；

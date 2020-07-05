@@ -1,7 +1,8 @@
 package com.zxj.itoken.service.admin.service.impl;
 
 import com.zxj.itoken.common.domain.TbSysUser;
-import com.zxj.itoken.service.admin.mapper.TbSysUserMapper;
+import com.zxj.itoken.common.mapper.TbSysUserMapper;
+import com.zxj.itoken.common.service.impl.BaseServiceImpl;
 import com.zxj.itoken.service.admin.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,9 @@ import tk.mybatis.mapper.entity.Example;
  */
 @Service
 @Transactional(readOnly = true)   // 只读
-public class AdminServiceImpl implements AdminService {
+// 直接继承BaseServiceImpl实现
+public class AdminServiceImpl extends BaseServiceImpl<TbSysUser, TbSysUserMapper> implements AdminService {
+
     @Autowired
     private TbSysUserMapper tbSysUserMapper;
 

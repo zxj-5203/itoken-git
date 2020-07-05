@@ -2,6 +2,8 @@ spring:
   cloud:
     config:
       uri: http://192.168.141.180:8888 # 配置服务中心spring-cloud-config的地址；
-      name: itoken-zuul          # 配置文件的名字的前缀；
+      name: itoken-client-eureka, itoken-client-zipkin, itoken-client-admin, itoken-zuul          # 配置文件的名字的前缀；
       label: master              # 配置仓库的分支；
       profile: prod     			 # 配置文件的环境标识：指定激活dev环境的配置文件；
+
+

@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: itoken-service-upload
+
+server:
+  port: 8505
+
+# 自定义配置
+fastdfs.base.url: http://192.168.141.180:8887/   # Nginx的地址
+storage:
+  type: fastdfs
+  fastdfs:
+    tracker_server: 192.168.141.180:22122   # 追踪器的地址

@@ -1,6 +1,5 @@
 package com.zxj.itoken.service.sso.controller;
 
-import com.ctc.wstx.util.StringUtil;
 import com.zxj.itoken.common.domain.TbSysUser;
 import com.zxj.itoken.common.utils.CookieUtils;
 import com.zxj.itoken.common.utils.MapperUtils;
@@ -13,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
@@ -52,15 +50,15 @@ public class LoginController {
                         // json转实体信息
                         TbSysUser tbSysUser = MapperUtils.json2pojo(json, TbSysUser.class);
                         // 都不为空，说明用户已登录；
-                        if(tbSysUser != null){
+                        if (tbSysUser != null) {
                             // 判断是直接请求的sso系统，还是其他系统跳转过来
-                            if(StringUtils.isNotBlank(url)){
+                            if (StringUtils.isNotBlank(url)) {
                                 // 如果是从其他系统过来的，已登录直接重定向回去；
                                 return "redirect:" + url;
                             }
                         }
                         // 将登陆信息返回登录页
-                            model.addAttribute("tbSysUser", tbSysUser);
+                        model.addAttribute("tbSysUser", tbSysUser);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -68,7 +66,9 @@ public class LoginController {
 
             }
         }
-
+        if (StringUtils.isNotBlank(url)) {
+            model.addAttribute("url", url);
+        }
 
         return "login";
     }
@@ -118,6 +118,7 @@ public class LoginController {
 
     /**
      * 单点注销
+     *
      * @param request
      * @param response
      * @param model
@@ -126,7 +127,7 @@ public class LoginController {
      */
     @GetMapping(value = "logout")
     public String logout(HttpServletRequest request, HttpServletResponse response, Model model,
-                         @RequestParam(required = false) String url){
+                         @RequestParam(required = false) String url) {
         try {
             // 直接删除cookie即可
             CookieUtils.deleteCookie(request, response, "token");

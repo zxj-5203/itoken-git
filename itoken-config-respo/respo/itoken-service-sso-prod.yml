@@ -1,12 +1,6 @@
 spring:
   application:
     name: itoken-service-sso
-  boot:
-    admin:
-      client:
-        url: http://192.168.141.180:8084
-  zipkin:
-    base-url: http://192.168.141.180:9411
   # 配置数据源
   datasource:
     druid:
@@ -20,41 +14,6 @@ spring:
       # MySQL 8.x: com.mysql.cj.jdbc.Driver
       driver-class-name: com.mysql.jdbc.Driver
 
-  thymeleaf:
-    cache: false
-    mode: LEGACYHTML5
-    encoding: UTF-8
-    servlet:
-      content-type: text/html
 
 server:
   port: 8503              # 指定本服务开启的端口号；
-
-# feign 开启熔断器
-feign:
-  hystrix:
-    enabled: true
-
-mybatis:
-  # 实体类的存放路径
-  type-aliases-package: com.zxj.itoken.common.domain
-  mapper-locations: classpath:mapper/*.xml
-
-logging:
-  level:
-    com.zxj.itoken.service.admin.mapper: debug
-
-eureka:
-  client:
-    serviceUrl:
-#      defaultZone: http://192.168.141.180:8761/eureka/,http://192.168.141.180:8861/eureka/,http://192.168.141.180:8961/eureka/
-       defaultZone: http://192.168.141.180:8761/eureka/
-
-management:
-  endpoint:
-    health:
-      show-details: always
-  endpoints:
-    web:
-      exposure:
-        include: health,info

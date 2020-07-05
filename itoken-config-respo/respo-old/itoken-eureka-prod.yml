@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: itoken-eureka   # 指定本服务的名称；
+  boot:
+    admin:                # Spring Boot Admin 服务监控；
+      client:
+        url: http://192.168.141.180:8084   # 指定Admin服务端的地址+端口，本服务作为Admin的客户端被其监控；
+  zipkin:
+    base-url: http://192.168.141.180:9411  # 配置 Zipkin Server 的地址；
+
+server:
+  port: 8761              # 指定本服务开启的端口号；
+
+eureka:
+  instance:
+    hostname: 192.168.141.180        # 指定eureka服务器的地址
+  client:
+    registerWithEureka: false  # 指定该项目作为eureka服务端存在；
+                              # 表示是否将自己注册到Eureka，要构建集群环境时，应该改成true，表示将自己注册到集群；
+    fetchRegistry: false       # 获取注册表，不设置为false表示该项目是客户端；
+                              # 表示是否从Eureka获取注册信息，如果是集群环境，要改成true，表示需要同步其他Eureka节点信息；
+    serviceUrl:               # 指定Eureka服务端地址，根据此地址注册将本服务到Eureka服务端；
+#      defaultZone: http://192.168.141.180:8761/eureka/,http://192.168.141.180:8861/eureka/,http://192.168.141.180:8961/eureka/
+       defaultZone: http://192.168.141.180:8761/eureka/
+
+management:               # Spring Boot Admin 服务端配置；
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,info   # 若写成*，则显示的信息项更多；

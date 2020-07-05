@@ -1,5 +1,7 @@
 package com.zxj.itoken.web.admin.controller;
 
+import com.zxj.itoken.common.domain.TbSysUser;
+import com.zxj.itoken.common.web.controller.BaseController;
 import com.zxj.itoken.web.admin.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @date 2020/06/20
  */
 @Controller   // 做页面跳转，不是rest
-public class AdminController {
+public class AdminController extends BaseController<TbSysUser, AdminService> {
     @Autowired
     private AdminService adminService;
 
